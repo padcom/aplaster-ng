@@ -43,6 +43,7 @@ export default {
 <style scoped>
 .config-tree-view {
   font-family: arial;
+  user-select: none;
 }
 li label {
   cursor: pointer;

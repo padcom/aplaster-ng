@@ -1,6 +1,6 @@
 # configurator
 
-> A Vue.js project
+> Aplaster configurator
 
 ## Build Setup
 

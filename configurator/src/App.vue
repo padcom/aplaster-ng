@@ -13,7 +13,7 @@ import PropertyEditor from './components/PropertyEditor'
 import ConfigTreeView from './components/ConfigTreeView'
 
 export default {
-  name: 'app',
+  name: 'aplaster-config-editor',
   components: {
     PropertyEditor,
     ConfigTreeView
