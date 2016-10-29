@@ -1,48 +1,31 @@
 <template>
   <div id="app">
-    <property-editor
-      :properties="data.type.props"
-      :data="data"
-    />
-    <p style="margin-top: 20px">{{data.name}}, {{ data.host }}:{{data.port}}</p>
+    <config-tree-view :config="config" :selected="currentItem" @item-selected="selectConfigElement($event)" />
+    <p style="margin: 20px 0">{{currentItem.name}}</p>
+    <property-editor :properties="currentItem.type.props" :data="currentItem" />
   </div>
 </template>
 
 <script>
+import { config } from './config'
 import PropertyEditor from './components/PropertyEditor'
-
-const Module = {
-  props: {
-    name: {
-      title: 'Name',
-      type: 'string'
-    },
-    host: {
-      title: 'Host',
-      type: 'string'
-    },
-    port: {
-      title: 'Port',
-      type: 'number',
-      min: 1024,
-      max: 65535
-    }
-  }
-}
+import ConfigTreeView from './components/ConfigTreeView'
 
 export default {
   name: 'app',
   components: {
-    PropertyEditor
+    PropertyEditor,
+    ConfigTreeView
   },
   data() {
     return {
-      data: {
-        type: Module,
-        name: 'Module - kitchen',
-        host: '127.0.0.1',
-        port: 7777
-      }
+      config,
+      currentItem: config.modules[0]
+    }
+  },
+  methods: {
+    selectConfigElement(e) {
+      this.currentItem = e
     }
   }
 }
@@ -70,6 +53,7 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
