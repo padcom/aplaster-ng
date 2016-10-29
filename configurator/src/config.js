@@ -54,8 +54,7 @@ const Digital = {
     },
     index: {
       title: 'Index',
-      type: 'number',
-      readonly: true
+      type: 'readonly'
     },
     direction: {
       title: 'Direction',

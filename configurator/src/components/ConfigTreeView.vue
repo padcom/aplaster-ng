@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="config-tree-view">
     <ul class="modules">
       <li v-for="module in config.modules" class="module">
         <label @click="selectItem(module)" :class="{ selected: isItemSelected(module) }">{{module.name}}</label>
@@ -41,12 +41,18 @@ export default {
 </script>
 
 <style scoped>
+.config-tree-view {
+  font-family: arial;
+}
 li label {
   cursor: pointer;
 }
 ul {
   list-item-style: disc;
   padding-left: 20px;
+}
+label:hover {
+  text-decoration: underline;
 }
 label.selected {
   font-weight: bold;

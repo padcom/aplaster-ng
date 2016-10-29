@@ -1,6 +1,6 @@
 <template>
-  <div style="height: 200px">
-    <table class="property-editor">
+  <div class="property-editor" style="height: 200px">
+    <table>
       <thead>
         <tr>
           <th>{{ i18n.title }}</th>
@@ -10,6 +10,7 @@
       <tbody>
         <tr v-for="(property, key) in properties">
           <td class="title">{{ property.title }}</td>
+          <td class="value" v-if="property.type === 'readonly'"><span class="readonly">{{data[key]}}</span></td>
           <td class="value" v-if="property.type === 'string'"><input type="text" v-model="data[key]"/></td>
           <td class="value" v-if="property.type === 'number'"><input type="number" :min="property.min" :max="property.max" v-model="data[key]" /></td>
           <td class="value" v-if="property.type === 'select'">
@@ -43,7 +44,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
-table.property-editor {
+* {
+  font-size: 13px;
+  font-family: arial;
+}
+table {
   th {
     font-weight: 400;
     background-color: gray;
@@ -51,8 +56,12 @@ table.property-editor {
     padding: 3px;
   }
   td {
-    margin: 2px;
+    padding: 01px 2px;
+    margin: 0;
     border: solid 1px #ddd;
+    height: 24px;
+    align: center;
+    vertical-align: middle;
   }
   td.title {
     width: 150px;
@@ -63,9 +72,20 @@ table.property-editor {
     input, select {
       width: 100%;
       border: none;
+      padding: 3px;
+      background-color: white;
     }
-    input:focus {
-      outline: none;
+
+    select, option {
+      padding: 2px 0px;
+    }
+
+    input:focus, select:focus {
+      outline: dotted 1px gray;
+    }
+
+    .readonly {
+      padding: 3px;
     }
   }
 }
