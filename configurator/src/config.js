@@ -64,59 +64,82 @@ const Digital = {
   }
 }
 
-export const config = {
+export const devices = {
+  'module': Module,
+  'serial': RS232,
+  'digital': Digital
+}
+
+let config = {
   modules: [ {
-    type: Module,
+    type: 'module',
     name: 'Module - kitchen',
     host: '127.0.0.1',
     port: 7777,
     components: [ {
-      type: RS232,
+      type: 'serial',
       name: 'Serial1',
       baudrate: 19200,
       bits: 8,
       parity: 0,
       stop: 1
     }, {
-      type: Digital,
+      type: 'digital',
       name: 'Output 1',
       index: 0,
       direction: 0
     }, {
-      type: Digital,
+      type: 'digital',
       name: 'Output 2',
       index: 1,
       direction: 0
     }, {
-      type: Digital,
+      type: 'digital',
       name: 'Output 3',
       index: 2,
       direction: 0
     }, {
-      type: Digital,
+      type: 'digital',
       name: 'Output 4',
       index: 3,
       direction: 0
     }, {
-      type: Digital,
+      type: 'digital',
       name: 'Output 5',
       index: 4,
       direction: 0
     }, {
-      type: Digital,
+      type: 'digital',
       name: 'Output 6',
       index: 5,
       direction: 0
     }, {
-      type: Digital,
+      type: 'digital',
       name: 'Output 7',
       index: 6,
       direction: 0
     }, {
-      type: Digital,
+      type: 'digital',
       name: 'Output 8',
       index: 7,
       direction: 0
     } ]
   } ]
+}
+
+export function save() {
+  if (typeof Storage !== 'undefined') {
+    global.localStorage.setItem('config', JSON.stringify(config))
+  } else {
+    console.error('Local storage not available')
+  }
+}
+
+export function load() {
+  if (typeof Storage !== 'undefined') {
+    config = JSON.parse(global.localStorage.getItem('config')) || config
+  } else {
+    console.error('Local storage not available')
+  }
+  return config
 }

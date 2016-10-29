@@ -1,13 +1,14 @@
 <template>
   <div id="app">
+    <button @click="saveConfig()">Save</button>
     <config-tree-view :config="config" :selected="currentItem" @item-selected="selectConfigElement($event)" />
     <p style="margin: 20px 0">{{currentItem.name}}</p>
-    <property-editor :properties="currentItem.type.props" :data="currentItem" />
+    <property-editor :properties="devices[currentItem.type].props" :data="currentItem" />
   </div>
 </template>
 
 <script>
-import { config } from './config'
+import { devices, load as loadConfig, save as saveConfig } from './config'
 import PropertyEditor from './components/PropertyEditor'
 import ConfigTreeView from './components/ConfigTreeView'
 
@@ -18,15 +19,18 @@ export default {
     ConfigTreeView
   },
   data() {
+    const config = loadConfig()
     return {
       config,
+      devices,
       currentItem: config.modules[0]
     }
   },
   methods: {
     selectConfigElement(e) {
       this.currentItem = e
-    }
+    },
+    saveConfig
   }
 }
 </script>
