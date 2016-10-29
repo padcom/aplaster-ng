@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 200px">
     <table class="property-editor">
       <thead>
         <tr>
@@ -12,6 +12,11 @@
           <td class="title">{{ property.title }}</td>
           <td class="value" v-if="property.type === 'string'"><input type="text" v-model="data[key]"/></td>
           <td class="value" v-if="property.type === 'number'"><input type="number" :min="property.min" :max="property.max" v-model="data[key]" /></td>
+          <td class="value" v-if="property.type === 'select'">
+            <select v-model="data[key]">
+              <option v-for="(key, value) in property.values" :value="key">{{value}}</option>
+            </select>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -28,7 +33,7 @@ export default {
       type: Object,
       default: function() {
         return {
-          title: 'Title',
+          title: 'Property',
           value: 'Value'
         }
       }
@@ -55,7 +60,7 @@ table.property-editor {
   td.value {
     width: 150px;
 
-    input {
+    input, select {
       width: 100%;
       border: none;
     }

@@ -25,27 +25,23 @@ const RS232 = {
     },
     baudrate: {
       title: 'Baudrate',
-      type: 'number',
-      min: 9600,
-      max: 115200
+      type: 'select',
+      values: { '4800': 4800, '9600': 9600, '19200': 19200, '38400': 38400, '57600': 57600, '115200': 115200 }
     },
     bits: {
       title: 'Data bits',
-      type: 'number',
-      min: 7,
-      max: 8
+      type: 'select',
+      values: { '7': 7, '8': 8 }
     },
     parity: {
       title: 'Parity',
-      type: 'number',
-      min: 0,
-      max: 1
+      type: 'select',
+      values: { no: 0, yes: 1 }
     },
     stop: {
       title: 'Stop bits',
-      type: 'number',
-      min: 1,
-      max: 2
+      type: 'select',
+      values: { '1': 1, '2': 2 }
     }
   }
 }
@@ -53,7 +49,7 @@ const RS232 = {
 const Digital = {
   props: {
     name: {
-      title: 'Digital input/output',
+      title: 'Name',
       type: 'string'
     },
     index: {
@@ -63,9 +59,8 @@ const Digital = {
     },
     direction: {
       title: 'Direction',
-      type: 'number',
-      min: 0,
-      max: 0
+      type: 'select',
+      values: { output: 0, input: 1 }
     }
   }
 }
