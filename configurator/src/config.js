@@ -4,6 +4,10 @@ const Module = {
       title: 'Name',
       type: 'string'
     },
+    mac: {
+      title: 'MAC',
+      type: 'string'
+    },
     host: {
       title: 'Host',
       type: 'string'
@@ -74,6 +78,7 @@ let config = {
   modules: [ {
     type: 'module',
     name: 'Module - kitchen',
+    mac: 'AA:BB:CC:DD:EE:FF',
     host: '127.0.0.1',
     port: 7777,
     components: [ {

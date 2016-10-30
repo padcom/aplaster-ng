@@ -1,11 +1,53 @@
 <template>
   <div id="app">
-    <button @click="saveConfig()">Save</button>
-    <config-tree-view :config="config" :selected="currentItem" @item-selected="selectConfigElement($event)" />
-    <p style="margin: 20px 0">{{currentItem.name}}</p>
-    <property-editor :properties="devices[currentItem.type].props" :data="currentItem" />
+    <header><h1>Aplaster configurator</h1></header>
+    <div id="toolbar">
+      <button @click="saveConfig()">Save</button>
+    </div>
+    <div id="workarea">
+      <config-tree-view id="tree-view" :config="config" :selected="currentItem" @item-selected="selectConfigElement($event)" />
+      <div id="code-editor">Code editor</div>
+      <property-editor id="property-editor" :properties="devices[currentItem.type].props" :data="currentItem" />
+    </div>
   </div>
 </template>
+
+<style>
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+#app header {
+  font-size: 32px;
+  padding: 4px 10px 20px 10px;
+}
+
+#app #toolbar {
+  padding: 4px 10px 20px 10px;
+}
+
+#app #workarea {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#app #tree-view {
+  padding-right: 20px;
+}
+
+#app #code-editor {
+  flex-grow: 1;
+  background-color: #ddd;
+  margin-right: 20px;
+  min-height: 100px;
+}
+
+#app #property-editor {
+  padding-right: 20px;
+}
+</style>
 
 <script>
 import { devices, load as loadConfig, save as saveConfig } from './config'
@@ -35,7 +77,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style>
 html {
   box-sizing: border-box;
 }
@@ -52,8 +94,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
