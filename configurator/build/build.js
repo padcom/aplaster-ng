@@ -21,7 +21,9 @@ spinner.start()
 var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
 rm('-rf', assetsPath)
 mkdir('-p', assetsPath)
-cp('-R', 'static/*', assetsPath)
+
+// Enable when static resources are to be copied to the target folder
+// cp('-R', 'static/*', assetsPath)
 
 webpack(webpackConfig, function (err, stats) {
   spinner.stop()

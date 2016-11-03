@@ -8,3 +8,8 @@ selenium-debug.log
 target/
 .tmp
 .#*
+node/
+.classpath
+.project
+.settings
+yarn.lock
