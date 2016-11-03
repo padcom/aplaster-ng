@@ -10,7 +10,7 @@
       <tbody>
         <tr v-for="(property, key) in properties">
           <td class="title">{{ property.title }}</td>
-          <td class="value" v-if="property.type === 'readonly'"><span class="readonly">{{data[key]}}</span></td>
+          <td class="value" v-if="property.type === 'readonly'"><input type="text" readonly v-model="data[key]"/></td>
           <td class="value" v-if="property.type === 'string'"><input type="text" v-model="data[key]"/></td>
           <td class="value" v-if="property.type === 'number'"><input type="number" :min="property.min" :max="property.max" v-model="data[key]" /></td>
           <td class="value" v-if="property.type === 'select'">
