@@ -54,6 +54,8 @@ table {
     background-color: gray;
     color: #eee;
     padding: 3px;
+    user-select: none;
+    cursor: default;
   }
   td {
     padding: 01px 2px;
@@ -65,6 +67,8 @@ table {
   }
   td.title {
     width: 150px;
+    user-select: none;
+    cursor: default;
   }
   td.value {
     width: 150px;
@@ -82,10 +86,6 @@ table {
 
     input:focus, select:focus {
       outline: dotted 1px gray;
-    }
-
-    .readonly {
-      padding: 3px;
     }
   }
 }
