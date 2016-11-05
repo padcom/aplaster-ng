@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header><h1>Aplaster configurator</h1></header>
+    <header><h1>Aplaster configurator ({{ ip }})</h1></header>
     <div id="toolbar">
       <button @click="saveConfig()">Save</button>
     </div>
@@ -14,6 +14,8 @@
 
 <script>
 import { devices, load as loadConfig, save as saveConfig } from '../config'
+import { loadIpAddress } from '../api'
+
 import PropertyEditor from 'components/PropertyEditor'
 import ConfigTreeView from 'components/ConfigTreeView'
 
@@ -25,7 +27,11 @@ export default {
   },
   data() {
     const config = loadConfig()
+    loadIpAddress()
+      .then(response => { this.ip = response.data.ip })
+
     return {
+      ip: '',
       config,
       devices,
       currentItem: config.modules[0]
