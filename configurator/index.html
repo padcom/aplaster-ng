@@ -58,6 +58,13 @@
     </style>
   </head>
   <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+      <router-link :to="{ path: '/', query: { info: 'test' } }">Home</router-link>
+      <router-link to="/config">Configurator</router-link>
+
+      <span>Currently at: {{ route.path }}</span>
+
+      <router-view></router-view>
+    </div>
   </body>
 </html>
