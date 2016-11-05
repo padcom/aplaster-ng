@@ -62,9 +62,12 @@
       <router-link :to="{ path: '/', query: { info: 'test' } }">Home</router-link>
       <router-link to="/config">Configurator</router-link>
 
-      <span>Currently at: {{ route.path }}</span>
+      <span>Currently at: {{ $route.path }}</span>
 
       <router-view></router-view>
+
+      <br>
+      <pre>{{ $route | json(16) }}</pre>
     </div>
   </body>
 </html>

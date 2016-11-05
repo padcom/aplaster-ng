@@ -3,17 +3,10 @@
 import Vue from 'vue'
 
 import router from './router'
-
-// Include filters
-const filters = require.context('./filters', true, /\.js$/)
-filters.keys().forEach(filters)
+import json from 'filters/json'
 
 new Vue({
   router,
   el: '#app',
-  computed: {
-    route() {
-      return this.$route
-    }
-  }
+  filters: { json }
 })
