@@ -379,6 +379,7 @@
 
 	<modules>
 		<module>server</module>
+		<module>simulator</module>
 		<module>configurator</module>
 	</modules>
 </project>
