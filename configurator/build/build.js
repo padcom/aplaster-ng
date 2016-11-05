@@ -23,7 +23,7 @@ rm('-rf', assetsPath)
 mkdir('-p', assetsPath)
 
 // Enable when static resources are to be copied to the target folder
-// cp('-R', 'static/*', assetsPath)
+// cp('-R', 'src/static/*', assetsPath)
 
 webpack(webpackConfig, function (err, stats) {
   spinner.stop()

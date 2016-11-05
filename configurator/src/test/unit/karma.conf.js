@@ -5,8 +5,8 @@
 
 var path = require('path')
 var merge = require('webpack-merge')
-var baseConfig = require('../../build/webpack.base.conf')
-var utils = require('../../build/utils')
+var baseConfig = require('../../../build/webpack.base.conf')
+var utils = require('../../../build/utils')
 var webpack = require('webpack')
 var projectRoot = path.resolve(__dirname, '../../')
 
@@ -23,7 +23,7 @@ var webpackConfig = merge(baseConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': require('../../config/test.env')
+      'process.env': require('../../../config/test.env')
     })
   ]
 })
@@ -42,7 +42,7 @@ webpackConfig.module.preLoaders.unshift({
 // only apply babel for test files when using isparta
 webpackConfig.module.loaders.some(function (loader, i) {
   if (loader.loader === 'babel') {
-    loader.include = path.resolve(projectRoot, 'test/unit')
+    loader.include = path.resolve(projectRoot, 'ssrc/test/unit')
     return true
   }
 })

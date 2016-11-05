@@ -11,7 +11,7 @@
 
 	<artifactId>configurator</artifactId>
 	<name>Aplaster :: Configurator</name>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
 	<build>
 		<plugins>

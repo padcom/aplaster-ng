@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "unit": "karma start test/unit/karma.conf.js --single-run",
-    "e2e": "node test/e2e/runner.js",
+    "unit": "karma start src/test/unit/karma.conf.js --single-run",
+    "e2e": "node src/test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
@@ -70,6 +70,7 @@
     "sinon-chai": "^2.8.0",
     "url-loader": "^0.5.7",
     "vue-loader": "^9.4.0",
+    "vue-router": "^2.0.1",
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
