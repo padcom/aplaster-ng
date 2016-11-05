@@ -18,9 +18,9 @@
 			file:${lg.config.location:${catalina.home}/conf/aplaster.properties}" />
 
 	<!-- Spring internals -->
-	<context:component-scan base-package="com.aplaline.aplaster">
+	<context:component-scan base-package="com.aplaline.aplaster.server">
 		<!-- included in the web context -->
-		<context:exclude-filter type="regex" expression="com\.aplaline\.aplaster\.web\..+"/>
+		<context:exclude-filter type="regex" expression="com\.aplaline\.aplaster\.server\.web\..+"/>
 	</context:component-scan>
 
 	<!-- Caching -->
