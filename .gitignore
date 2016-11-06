@@ -1,15 +1,5 @@
 .DS_Store
 node_modules/
-dist/
-npm-debug.log
-test/unit/coverage
-test/e2e/reports
-selenium-debug.log
 target/
-.tmp
-.#*
-node/
-.classpath
-.project
-.settings
+npm-debug.log
 yarn.lock
