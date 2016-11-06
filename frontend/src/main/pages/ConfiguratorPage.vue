@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <header><h1>Aplaster configurator ({{ ip }})</h1></header>
+    <header>
+      <h1>Aplaster configurator {{ ip | inParents }}</h1>
+      <h3>{{ message }}</h3>
+    </header>
     <div id="toolbar">
       <button @click="saveConfig()">Save</button>
     </div>
@@ -14,7 +17,7 @@
 
 <script>
 import { devices, load as loadConfig, save as saveConfig } from '../config'
-import { loadIpAddress } from '../api'
+import * as API from '../api'
 
 import PropertyEditor from 'components/PropertyEditor'
 import ConfigTreeView from 'components/ConfigTreeView'
@@ -27,11 +30,14 @@ export default {
   },
   data() {
     const config = loadConfig()
-    loadIpAddress()
+    API.loadIpAddress()
       .then(response => { this.ip = response.data.ip })
+    API.loadMessage()
+      .then(response => { this.message = response.data.message })
 
     return {
       ip: '',
+      message: '',
       config,
       devices,
       currentItem: config.modules[0]
@@ -42,6 +48,11 @@ export default {
       this.currentItem = e
     },
     saveConfig
+  },
+  filters: {
+    inParents(value) {
+      return '(' + value + ')'
+    }
   }
 }
 </script>
@@ -52,33 +63,33 @@ export default {
   flex-direction: column;
 }
 
-#app header {
+header h1 {
   font-size: 32px;
   padding: 4px 10px 20px 10px;
 }
 
-#app #toolbar {
+#toolbar {
   padding: 4px 10px 20px 10px;
 }
 
-#app #workarea {
+#workarea {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
 
-#app #tree-view {
+#tree-view {
   padding-right: 20px;
 }
 
-#app #code-editor {
+#code-editor {
   flex-grow: 1;
   background-color: #ddd;
   margin-right: 20px;
   min-height: 100px;
 }
 
-#app #property-editor {
+#property-editor {
   padding-right: 20px;
 }
 </style>

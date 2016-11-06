@@ -37,6 +37,11 @@ module.exports = {
     stats: {
       colors: true,
       chunks: false
+    },
+    proxy: {
+      '/ip': { target: 'http://ip.jsontest.com', changeOrigin: true, pathRewrite: { '^/ip': '' } },
+      '/api': { target: 'http://localhost:3000' },
+      '/updates': { target: 'http://localhost:3000', ws: true }
     }
   },
   devtool: '#eval-source-map'

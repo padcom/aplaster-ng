@@ -55,6 +55,10 @@
         border-collapse: collapse;
         border-spacing: 0;
       }
+      #messages {
+        height: 100px;
+        overflow-y: overlay;
+      }
     </style>
   </head>
   <body>
@@ -67,6 +71,11 @@
       <br/>
 
       <router-view></router-view>
+
+      <br />
+      <div id="messages" ref="messages">
+        <pre v-for="message in messages">{{ message.timestamp }}: {{ message.content }}</pre>
+      </div>
     </div>
   </body>
 </html>
